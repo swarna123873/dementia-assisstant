@@ -1,0 +1,110 @@
+/* Reset some default styles */
+body, h2, h3, form {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #e0e0e0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+
+/* Container with black border and purple glow */
+.glass-container {
+    background: rgba(255, 255, 255, 0.25);
+    backdrop-filter: blur(10px);
+    border: 4px solid black; /* Black border */
+    border-radius: 20px;
+    padding: 40px;
+    width: 90%;
+    max-width: 800px;
+    box-shadow: 0 0 30px 10px rgba(128, 0, 128, 0.4); /* Purple glow */
+}
+
+/* Headings */
+h2, h3 {
+    text-align: center;
+    color: #111;
+    margin-bottom: 25px;
+}
+
+/* Each form section */
+.form-section {
+    margin-bottom: 30px;
+}
+
+/* Input fields, textareas, selects */
+input[type="text"],
+input[type="file"],
+input[type="number"],
+input[type="email"],
+textarea,
+select {
+    width: 100%;
+    padding: 12px 14px;
+    margin-bottom: 20px;
+    border: 2px solid black; /* Black border for inputs */
+    border-radius: 10px;
+    background: rgba(255, 255, 255, 0.95);
+    color: #000;
+    font-size: 16px;
+}
+
+/* Placeholder black border */
+input::placeholder,
+textarea::placeholder {
+    color: #333;
+    border: 1px solid black;
+    opacity: 1;
+}
+
+/* Photo block styling */
+.photo-block {
+    margin-bottom: 20px;
+}
+
+/* Submit Button */
+.submit-button {
+    background-color: purple;
+    color: white;
+    padding: 14px 30px;
+    border: none;
+    border-radius: 12px;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: bold;
+    display: block;
+    margin: 0 auto;
+    box-shadow: 0 0 10px rgba(128, 0, 128, 0.6); /* Purple glow on button */
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.submit-button:hover {
+    background-color: #8a2be2;
+    transform: scale(1.05);
+}
+img {
+    border: 2px solid black;
+    width: 200px;
+    height: 200px;
+    object-fit: cover;  /* Ensures the image fills the box without distortion */
+    margin: 10px;        /* Optional spacing between images */
+    display: inline-block;
+}
+
+/* Responsive layout */
+@media screen and (max-width: 768px) {
+    .glass-container {
+        padding: 25px;
+    }
+
+    .submit-button {
+        width: 100%;
+    }
+}
+

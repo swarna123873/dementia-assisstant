@@ -1,0 +1,114 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>See Reminders</title>
+    <link rel="stylesheet" href="{% static 'css/style3.css' %}">
+    <style>
+       .modal {
+    display: none;
+    position: fixed;
+    z-index: 999;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.6); /* dark background overlay */
+}
+
+.modal-content {
+    background-color: #000; /* black dialog box */
+    color: #fff; /* white text */
+    margin: 10% auto;
+    padding: 20px;
+    width: 60%;
+    border-radius: 10px;
+    position: relative;
+    box-shadow: 0 0 15px rgba(255, 255, 255, 0.2); /* subtle glow */
+}
+
+.close-btn {
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    font-size: 24px;
+    cursor: pointer;
+    color: #fff; /* white close button */
+    background: none;
+    border: none;
+}
+
+.modal h3, .modal p, .modal li {
+    color: #fff; /* white headings, text, and list items */
+}
+
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- MEDICAL REMINDERS -->
+        <div class="box">
+            <h2>🩺 Medical Reminders</h2>
+            {% for reminder in medical_reminders %}
+                <div class="reminder">
+                    <p><strong>Medicine:</strong> {{ reminder.medicine_name }}</p>
+                    <p><strong>Dosage:</strong> {{ reminder.dosage }}</p>
+                    <p><strong>Time:</strong> {{ reminder.time }}</p>
+                </div>
+            {% endfor %}
+            <button onclick="openModal('medicalModal')">⏰ Show Alarms</button>
+        </div>
+
+        <!-- DAILY LIFE REMINDERS -->
+        <div class="box">
+            <h2>🧠 Daily Life Reminders</h2>
+            {% for reminder in daily_reminders %}
+                <div class="reminder">
+                    <p><strong>Task:</strong> {{ reminder.task_display }}</p>
+                    <p><strong>Time:</strong> {{ reminder.time}}</p>
+                </div>
+            {% endfor %}
+            <button onclick="openModal('dailyModal')">⏰ Show Alarms</button>
+        </div>
+    </div>
+
+    <!-- MODAL FOR MEDICAL -->
+    <div id="medicalModal" class="modal">
+        <div class="modal-content">
+            <span class="close-btn" onclick="closeModal('medicalModal')">&times;</span>
+            <h3>⏰ It's Time - Medical Reminders</h3>
+            {% for reminder in medical_reminders %}
+                <p><strong>Medicine:</strong> {{ reminder.medicine_name }} | <strong>Dosage:</strong> {{ reminder.dosage }} | <strong>Time:</strong> {{ reminder.time }}</p>
+            {% endfor %}
+        </div>
+    </div>
+
+    <!-- MODAL FOR DAILY -->
+    <div id="dailyModal" class="modal">
+        <div class="modal-content">
+            <span class="close-btn" onclick="closeModal('dailyModal')">&times;</span>
+            <h3>⏰ It's Time - Daily Life Reminders</h3>
+            {% for reminder in daily_reminders %}
+                <p><strong>Task:</strong> {{ reminder.task_display }} | <strong>Time:</strong> {{ reminder.time }}</p>
+            {% endfor %}
+        </div>
+    </div>
+
+    <script>
+        function openModal(id) {
+            document.getElementById(id).style.display = 'block';
+        }
+        function closeModal(id) {
+            document.getElementById(id).style.display = 'none';
+        }
+
+        // Optional: Close modal on clicking outside
+        window.onclick = function(event) {
+            ['medicalModal', 'dailyModal'].forEach(id => {
+                const modal = document.getElementById(id);
+                if (event.target === modal) modal.style.display = "none";
+            });
+        };
+    </script>
+</body>
+</html>

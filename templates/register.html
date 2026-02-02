@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Register</title>
+  <style>
+    /* Reset and body styling */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Segoe UI', sans-serif;
+    }
+
+    body {
+      height: 100vh;
+      background: linear-gradient(135deg, #e0e0e0, #ffffff);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    /* Glassmorphic form container */
+  form {
+  background: rgba(255, 255, 255, 0.15);
+  border: 4px solid black;
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border-radius: 20px;
+  padding: 10px 50px;        /* small vertical padding, moderate horizontal */
+  width: 100%;
+  max-width: 750px;          /* moderate width */
+  max-height: 100vh;          /* max height 90% of viewport */
+  overflow-y: auto;          /* scroll inside form if content overflows */
+}
+
+
+    h2 {
+      text-align: center;
+      margin-bottom: 20px;
+      color: #333;
+    }
+
+    form p {
+      margin-bottom: 15px;
+      color: #333;
+    }
+
+    input, select {
+      width: 100%;
+      padding: 10px;
+      margin-top: 5px;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+    }
+/* Add 2px border to all inputs (including those with placeholders) */
+/* Inputs with placeholder */
+input[placeholder],
+textarea[placeholder],
+select {
+  border: 2px solid black;
+  border-radius: 8px;
+  padding: 10px;
+  width: 100%;
+  box-sizing: border-box;
+  background-color: white; /* keep background solid */
+  appearance: none; /* for select, removes default arrow in some browsers */
+}
+
+/* Optional: style the placeholder text color */
+input::placeholder,
+textarea::placeholder {
+  color: #555;
+  font-style: italic;
+}
+/* Add 2px border to all inputs (including those with placeholders) */
+input::placeholder {
+  /* placeholder text styles (color etc.) only */
+  color: #888;
+}
+
+/* Add 2px border to input fields */
+input {
+  border: 2px solid black; /* 2px border around input fields */
+  border-radius: 8px;
+  padding: 10px;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+    button[type="submit"] {
+      width: 100%;
+      padding: 12px;
+      margin-top: 10px;
+      background-color: #b388eb; /* Light violet */
+      color: white;
+      border: 2px solid black;
+      border-radius: 8px;
+      font-weight: bold;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+
+    button[type="submit"]:hover {
+      background-color: #a06cd5;
+    }
+  </style>
+</head>
+<body>
+  <form method="POST">
+    <h2>Create Account</h2>
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Register</button>
+  </form>
+</body>
+</html>
+
+

@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Recognize Faces</title>
+    <style>
+    body {
+        font-family: Arial;
+        background-color: #f9f9f9;
+    }
+
+    .container {
+        max-width: 800px;
+        margin: auto;
+        background: white;
+        padding: 20px;
+        margin-top: 50px;
+        border-radius: 10px;
+        border: 4px solid black;
+        box-shadow: 0 0 70px rgba(0, 0, 0, 0.7); /* Black glow */
+    }
+    .category-section h3 {
+        margin-left: 30px; /* Align heading with photos */
+        margin-bottom: 15px;
+    }
+    .h2{
+         margin-left: 60px;
+    }
+
+    .category-section {
+        margin-bottom: 30px;
+        padding-bottom: 20px;
+        border-bottom: 2px solid black; /* Black line separator */
+    }
+
+    .photo-box {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 15px;
+        justify-content: center;
+    }
+
+    .photo-item {
+        width: 150px;
+        padding: 10px;
+        background-color: #fff;
+        border: 2px solid black;
+        border-radius: 8px;
+        box-shadow: 0 0 10px rgba(144, 238, 144, 0.6);
+        text-align: center;
+    }
+
+    .photo-item img {
+        width: 100%;
+        height: 120px;
+        object-fit: cover;
+        border-radius: 5px;
+        margin-bottom: 5px;
+    }
+
+    .description {
+        font-size: 14px;
+        color: #333;
+        word-wrap: break-word;
+    }
+    .spiral-binding {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: calc(50% - 400px + 10px); /* Positions it in the gap: container center - half width + spiral gap */
+    width: 40px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+    z-index: 0; /* behind content */
+    pointer-events: none; /* ensures it doesn't block any clicks */
+}
+
+.spiral-ring {
+    width: 20px;
+    height: 2px;
+    background-color: black;
+    margin: 6px 0;
+    border-radius: 2px;
+}
+</style>
+
+</head>
+<body>
+  
+   
+    
+        <div class="container">
+   
+        <h2>Recognize Faces</h2>
+        {% for category, items in photos.items %}
+            <div class="category-section">
+                <h3>{{ category|title }}</h3>
+                <div class="photo-box">
+                    {% for item in items %}
+                        <div class="photo-item">
+                            <img src="{{ item.image.url }}" alt="{{ item.description }}">
+                            <p>{{ item.description }}</p>
+                        </div>
+                    {% endfor %}
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+</body>
+</html>

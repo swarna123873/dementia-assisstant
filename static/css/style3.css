@@ -1,0 +1,30 @@
+body {
+    font-family: Arial, sans-serif;
+    background: #e0e0e0;
+    margin: 0;
+    padding: 20px;
+}
+.container {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+}
+.box {
+    border: 2px solid black;
+    background: rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(10px);
+    border-radius: 15px;
+    padding: 20px;
+    width: 45%;
+}
+.reminder {
+    background: white;
+    padding: 10px;
+    border-radius: 10px;
+    margin-bottom: 10px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+}
+h2 {
+    border-bottom: 2px solid black;
+    padding-bottom: 10px;
+}

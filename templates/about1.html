@@ -1,0 +1,87 @@
+{% load static %}
+ <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us</title>
+    <link rel="stylesheet" href="{% static 'css/about-style.css' %}">  <!-- Separate CSS file for About Us -->
+</head>
+<body>
+
+<!-- Navigation Bar -->
+<header>
+    <nav>
+        <ul class="navbar">
+            <li><a href="{% url 'caregiver' %}">Back to Home</a></li>  <!-- Link back to the homepage -->
+        </ul>
+    </nav>
+</header>
+
+<!-- Hero Section -->
+<section class="hero">
+    <div class="hero-content">
+        <h1>About Our App</h1>
+        <p>Empowering Dementia Patients with Support and Assistance</p>
+        <a href="{% url 'caregiver' %}" class="btn">Back to Homepage</a>
+    </div>
+</section>
+
+<!-- About Us Content -->
+<main class="about-container">
+    <h2>Welcome to Our Application</h2>
+    <p>
+        Our app is designed to support **dementia patients** by offering continuous support and assistance, including:
+    </p>
+
+    <div class="features-container">
+        <!-- Feature 1 -->
+        <div class="feature-card">
+            <h3>Reminders & Notifications</h3>
+            <p>Timely reminders for medications, tasks, and appointments.</p>
+        </div>
+
+        <!-- Feature 2 -->
+        <div class="feature-card">
+            <h3>Cognitive Engagement</h3>
+            <p>Brain-training activities to boost mental sharpness.</p>
+        </div>
+
+        <!-- Feature 3 -->
+        <div class="feature-card">
+            <h3>Emergency Assistance</h3>
+            <p>Instant notification to caregivers in emergencies.</p>
+        </div>
+
+        <!-- Feature 4 -->
+        <div class="feature-card">
+            <h3>Facial Recognition</h3>
+            <p>Secure authentication for patient identification.</p>
+        </div>
+    </div>
+
+    <p>
+        Our goal is to **enhance the quality of life** for dementia patients by offering continuous support, safety, and cognitive engagement.
+    </p>
+
+    <a href="{% url 'caregiver' %}" class="btn">Back to Homepage</a>
+  
+</main>
+
+<!-- Image Section at the Bottom -->
+<section class="bottom-images">
+    <h2>Explore Our Features</h2>
+    <div class="image-gallery">
+    <img src="{% static 'imag/feature2.jpg' %}" alt="Description" class="bottom-img">
+    <img src="{% static 'imag/feature3.jpg' %}" alt="Description" class="bottom-img">     
+    <img src="{% static 'imag/feature1.jfif' %}" alt="Description" class="bottom-img">
+    </div>
+</section>
+
+<!-- Footer -->
+<footer>
+    <p>&copy; 2025 Cognitive AI Assistance. All rights reserved.</p>
+</footer>
+
+</body>
+</html>

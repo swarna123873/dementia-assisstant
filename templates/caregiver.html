@@ -1,0 +1,94 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Caregiver Dashboard</title>
+  <style>
+    /* Reset and base styling */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Segoe UI', sans-serif;
+    }
+
+    body {
+      height: 100vh;
+      background: linear-gradient(135deg, #ece9e6, #ffffff);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+    }
+
+    h1 {
+      font-size: 32px;
+      font-weight: 900;
+      color: #222;
+      margin-bottom: 20px;
+      text-align: center;
+    }
+
+    .container {
+      background: rgba(255, 255, 255, 0.15);
+      border: 4px solid black;
+      border-radius: 20px;
+      box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      padding: 30px 50px;
+      max-width: 600px;
+      width: 100%;
+      text-align: center;
+    }
+
+    .button-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 20px;
+    }
+
+    button {
+      background-color: #009688;
+      border: 2px solid black;
+      border-radius: 12px;
+      padding: 15px 20px;
+      font-size: 16px;
+      font-weight: bold;
+      color: white;
+      cursor: pointer;
+      transition: background-color 0.3s ease, transform 0.2s ease;
+      box-shadow: 0 4px 10px rgba(106, 27, 154, 0.4);
+    }
+
+    button:hover {
+      background-color: #4a148c;
+      transform: translateY(-3px);
+      box-shadow: 0 6px 14px rgba(74, 20, 140, 0.6);
+    }
+
+    button:active {
+      transform: translateY(0);
+      box-shadow: 0 2px 6px rgba(106, 27, 154, 0.3);
+    }
+  </style>
+</head>
+<body>
+  <h1>Welcome to Cognitive Assistant App</h1>
+  <div class="container">
+    <div class="button-grid">
+      <a href="{% url 'about1' %}"><button>About This App</button></a>
+      <a href="{% url 'upload_patient_details_and_photos' patient.id %}"><button>Upload Details of Patient</button></a>
+
+     <a href="{% url 'upload_emergency_contacts' %}"><button>Upload Emergency Assistance</button></a>
+
+      <a href="{% url 'upload_faces' %}"><button>Upload Photos to Recognize Faces</button></a>
+      <a href="{% url 'set_alarms' %}"><button>Set Alarms</button></a>
+    </div>
+  </div>
+</body>
+</html>
+

@@ -1,0 +1,51 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Set Alarms</title>
+    <link rel="stylesheet" href="{% static 'css/style2.css' %}">
+</head>
+<body>
+<div class="alarms-container">
+    <div class="form-card">
+        <h2>🩺 Medical Reminders</h2>
+        <form method="post">
+            {% csrf_token %}
+            {{ med_form.as_p }}
+            <button type="submit" name="add_medical" class="add-btn">➕ Add</button>
+        </form>
+        <div class="reminder-list">
+            {% for med in med_reminders %}
+                <div class="reminder-entry">
+                    <p><strong>{{ med.medicine_name }}</strong> - {{ med.dosage }} at {{ med.time }}</p>
+                    <form method="post" style="display:inline;">
+                        {% csrf_token %}
+                        <button type="submit" name="delete_med" value="{{ med.id }}" class="delete-btn">🗑️ Delete</button>
+                    </form>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+
+    <div class="form-card">
+        <h2>🧠 Daily Life Reminders</h2>
+        <form method="post">
+            {% csrf_token %}
+            {{ daily_form.as_p }}
+            <button type="submit" name="add_daily" class="add-btn">➕ Add</button>
+        </form>
+        <div class="reminder-list">
+            {% for daily in daily_reminders %}
+                <div class="reminder-entry">
+                    <p><strong>{{ daily.activity }}</strong> at {{ daily.time }}</p>
+                    <form method="post" style="display:inline;">
+                        {% csrf_token %}
+                        <button type="submit" name="delete_daily" value="{{ daily.id }}" class="delete-btn">🗑️ Delete</button>
+                    </form>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+</body>
+</html>

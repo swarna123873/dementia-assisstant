@@ -1,0 +1,70 @@
+{% load static %}
+<!DOCTYPE html>
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Know About Yourself</title>
+    <link rel="stylesheet" href="{% static 'css/style1.css' %}">
+</head>
+<body>
+    <div class="glass-container">
+
+        <h2>Patient Profile</h2>
+        {% if patient %}
+            <p><strong>Name:</strong> {{ patient.name }}</p>
+            <p><strong>Age:</strong> {{ patient.age }}</p>
+            <p><strong>Father's name:</strong> {{ patient.father_name }}</p>
+            <p><strong>Mother's name:</strong> {{ patient.mother_name }}</p>
+            <p><strong>Profession:</strong> {{ patient.profession }}</p>
+            <p><strong>Address:</strong> {{ patient.address }}</p>
+            <p><strong>Birthplace:</strong> {{ patient.birthplace }}</p>
+            <p><strong>Birthdate:</strong> {{ patient.birthdate|date:"d-m-Y" }}</p>
+            <p><strong>School name:</strong> {{ patient.schoolname }}</p>
+            <p><strong>College name:</strong> {{ patient.collegename }}</p>
+            <p><strong>Graduation year:</strong> {{ patient.graduationyr }}</p>
+            <p><strong>Degree:</strong> {{ patient.degree}}</p>
+            <p><strong>Favourite actor:</strong> {{ patient.favactor }}</p>
+            <p><strong>Favourite actress:</strong> {{ patient.favactress }}</p>
+            <p><strong>Favourite movie:</strong> {{ patient.favmovie}}</p>
+            <p><strong>Favourite singer:</strong> {{ patient.favsinger }}</p>
+             <p><strong>Favourite destination:</strong> {{ patient.favdesti }}</p>
+            <p><strong>Favourite timepass:</strong> {{ patient.favtimepass }}</p>
+            <p><strong>Favourite food:</strong> {{ patient.favfood}}</p>
+            <p><strong>Favourite fruit:</strong> {{ patient.favfruit }}</p>
+        {% else %}
+            <p>No patient data found.</p>
+        {% endif %}
+
+        <h3>Photos</h3>
+        {% if photos %}
+            {% for photo in photos %}
+                <div class="photo-display">
+                    <img src="{{ photo.image.url }}" alt="Photo" style="width: 250px; height: 250px; border: 2px solid black; object-fit: cover;">
+                    <p><strong>Description:</strong> {{ photo.description }}</p>
+                </div>
+            {% endfor %}
+        {% else %}
+            <p>No photos uploaded.</p>
+        {% endif %}
+        <h3>School Photos</h3>
+{% for photo in school_photos %}
+    <img src="{{ photo.image.url }}" style="width: 250px; height: 250px; border: 2px solid black; object-fit: cover;">
+{% endfor %}
+
+<h3>College Photos</h3>
+{% for photo in college_photos %}
+    <img src="{{ photo.image.url }}" style="width: 250px; height: 250px; border: 2px solid black; object-fit: cover;">
+{% endfor %}
+
+<h3>Memory Photos</h3>
+{% for photo in memory_photos %}
+    <img src="{{ photo.image.url }}" style="width: 250px; height: 250px; border: 2px solid black; object-fit: cover;">
+    <p><strong>Description:</strong> {{ photo.description }}</p>
+{% endfor %}
+
+
+    </div>
+</body>
+</html>
+

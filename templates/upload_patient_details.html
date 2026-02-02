@@ -1,0 +1,64 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Upload Patient Details</title>
+    <link rel="stylesheet" href="{% static 'css/style1.css' %}">
+</head>
+<body>
+    <div class="glass-container">
+        <h2>Upload Patient Details</h2>
+
+        <form method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+
+            <!-- Patient basic info (name, age, address) -->
+            {{ form.as_p }}
+
+            <!-- Original Photo formset with descriptions -->
+            <h3>Upload Photos with Descriptions</h3>
+            {{ formset.management_form }}
+            {% for photo_form in formset %}
+                <div class="photo-block">
+                    {{ photo_form.as_p }}
+                </div>
+            {% endfor %}
+
+            <!-- NEW: School Photos -->
+            <h3>Upload 6 School Photos</h3>
+            {{ school_formset.management_form }}
+            {% for form in school_formset %}
+                <div class="photo-block">
+                    {{ form.image.label }}<br>
+                    {{ form.image }}
+                </div>
+            {% endfor %}
+
+            <!-- NEW: College Photos -->
+            <h3>Upload 6 College Photos</h3>
+            {{ college_formset.management_form }}
+            {% for form in college_formset %}
+                <div class="photo-block">
+                    {{ form.image.label }}<br>
+                    {{ form.image }}
+                </div>
+            {% endfor %}
+
+            <!-- NEW: Memory Photos with Descriptions -->
+            <h3>Upload 5 Memory Photos with Descriptions</h3>
+            {{ memory_formset.management_form }}
+            {% for form in memory_formset %}
+                <div class="photo-block">
+                    {{ form.image.label }}<br>
+                    {{ form.image }}
+                    <br>
+                    {{ form.description.label }}<br>
+                    {{ form.description }}
+                </div>
+            {% endfor %}
+
+            <button type="submit" class="submit-button">Submit</button>
+        </form>
+    </div>
+</body>
+</html>

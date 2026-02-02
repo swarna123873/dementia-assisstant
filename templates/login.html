@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+{% load static %}
+<head>
+  <title>Dementia Login</title>
+  <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+<body>
+  <!-- Entire page container -->
+  <div class="container">
+
+    <!-- Left slider image -->
+    <div class="slider">
+      <img id="slideImg" src="{% static 'images/slide1.png' %}" alt="Caregiver helping patient">
+    </div>
+
+    <!-- Right form section -->
+    <div class="form-container">
+
+      <!-- ✅ Logo and taglines inside the form container ONLY -->
+      <div class="form-header">
+        <span class="left-tagline">It's time to fight</span>
+        <img src="{% static 'images/logo.png' %}" alt="Logo" class="logo-img">
+        <span class="right-tagline">Let's give memory a second chance</span>
+      </div>
+
+      <h2>COGNITIVE AI ASSISTANT FOR DEMENTIA PATIENTS</h2>
+
+      <form method="POST" action="{% url 'login' %}">
+        {% csrf_token %}
+
+        <label>* Role</label><br>
+        <input type="radio" name="role" value="caregiver" checked> Caregiver
+        <input type="radio" name="role" value="patient"> Patient<br><br>
+
+        <label>* Username</label>
+        <input type="text" name="username" placeholder="Mobile No. / Email / Staff Code" required>
+
+        <label>* Password</label>
+        <input type="password" name="password" placeholder="Password" required>
+        <input type="checkbox" onclick="togglePassword()"> Show Password<br>
+
+        <div class="button-row">
+          <button type="submit">Login</button>
+          <a href="{% url 'register' %}">Create Account</a>
+          <button type="button" class="credentials-btn" id="showCredentialsBtn">Show Patient Credentials</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <script src="{% static 'js/script.js' %}"></script>
+  <script>
+    // Reload on back navigation to prevent stale state
+    if (performance.navigation.type === 2) {
+      location.reload();
+    }
+
+    // Toggle password visibility
+    function togglePassword() {
+      const pwd = document.querySelector('input[name="password"]');
+      pwd.type = pwd.type === 'password' ? 'text' : 'password';
+    }
+
+    // Show credentials popup
+    document.getElementById('showCredentialsBtn').addEventListener('click', function () {
+      alert("Patient Credentials:\n\nUsername: swarna\nPassword: FFTU1234");
+    });
+  </script>
+</body>
+</html>
