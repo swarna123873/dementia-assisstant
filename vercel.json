@@ -15,7 +15,7 @@
             "DJANGO_SUPERUSER_EMAIL": "admin@example.com",
             "DJANGO_SUPERUSER_PASSWORD": "admin"
         },
-        "cmd": "python manage.py migrate && python manage.py collectstatic --noinput"
+        "cmd": "python manage.py collectstatic --noinput"
     },
     "routes": [
         {
